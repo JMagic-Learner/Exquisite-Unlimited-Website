@@ -1,0 +1,184 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.navigation-flex-row{
+  margin-left:50%;
+}
+
+.nav-item{
+  float:right;
+}
+
+.Banner-Container{
+  width: 100%;
+}
+
+.Banner-Image-Container {
+  height:50vw;
+  background-position: center;
+}
+
+.banner-overlay {
+  z-index:1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tab-text{
+  z-index:2;
+  position: relative;
+  top:50%;
+  left: 50%;
+  color:white;
+  transform: translate(-50%, 30%);
+  transition: color 1s ease-in-out
+}
+
+
+.tabs-inner {
+  width:100%;
+}
+/* .tab-background {
+  margin:1%;
+} */
+
+.Tab-Image-Container{
+  margin:1%;
+  height:300px;
+  opacity:0.1;
+  z-index:-1;
+  transition: opacity 0.5s ease-in-out;
+  background-position: center;
+}
+
+.Tab-Image-Container:hover{
+  margin:1%;
+  height:300px;
+  opacity:1;
+  z-index:-1;
+  transition: opacity 0.5s ease-in-out;
+  background-position: center;
+}
+
+
+.horizontal-container{
+  width:95%;
+  margin:auto;
+}
+
+.homepage-container-lower {
+margin-top:1%;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ABOUT */
+
+.about{
+  margin-top:5%;
+}
+
+.paragraph{
+  width:60%;
+  margin-left:10vw;
+}
+.column-image{
+  height:1000px;
+  background-position: center;
+}
+
+/* HOVER ITEM */
+.hover-action{
+  background-color: white;
+  width:100px;
+  transition: background-color ease-out 0.5s;
+}
+
+.hover-action:hover{
+  background-color: #e4e4e4;
+  width:100px;
+  transition: background-color ease-in 0.5s;
+}
+
+/* Shop Menu */
+.shop-menu {
+  width:75%;
+  margin:auto;
+}
+
+.shop-menu-button {
+  width:300px;
+}
+
+@media only screen and (max-width: 970px) {
+  .tab-text{
+    z-index:2;
+    position: relative;
+    /* top:50%;
+    left: 50%; */
+    color:black;
+    transform: translate(-50%, 50%);
+  }
+  .banner-overlay {
+    z-index:1;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .Banner-Image-Container {
+    right:50%;
+  }
+  .column-image{
+    margin-top:25%;
+    height:1300px;
+    background-position: center;
+  }
+}
+/* @media only screen and (max-width: 1380px) {
+  .Banner-Image-Container {
+    height:1000px;
+    width:100%;
+    position:relative;
+    margin:auto;
+  }
+} */
+
+
