@@ -31,7 +31,7 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

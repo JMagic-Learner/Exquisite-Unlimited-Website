@@ -3,11 +3,11 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
 const { typeDefs, resolvers } = require('./schemas');
-const { authMiddleware } = require('./utils/auth');
+// const { authMiddleware } = require('./utils/auth');
 
 const db = require('./config/connection');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 const app = express();
 // Congigring dotenv to use my key for the NY times search form
 require('dotenv').config();
@@ -15,7 +15,9 @@ require('dotenv').config();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
+  playground: true,
+  introspection: false
+  // context: authMiddleware,
 });
 
 server.applyMiddleware({ app });
