@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+require('dotenv').config();
 
 const { typeDefs, resolvers } = require('./schemas');
 // const { authMiddleware } = require('./utils/auth');
@@ -10,7 +11,7 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 4000;
 const app = express();
 // Congigring dotenv to use my key for the NY times search form
-require('dotenv').config();
+
 
 const server = new ApolloServer({
   typeDefs,
@@ -28,7 +29,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
-
 
 
 app.get('*', (req, res) => {

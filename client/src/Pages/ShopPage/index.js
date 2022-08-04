@@ -17,7 +17,9 @@ function Shop() {
       console.log(data)
     }
 
-    const ProductArray = data?.product|| [];
+    const ProductArray = data?.products|| [];
+    
+    
 
 return(
   <div className="Shop-Container">
