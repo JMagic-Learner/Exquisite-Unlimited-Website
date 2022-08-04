@@ -17,7 +17,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   playground: true,
-  introspection: true,
+  introspection: process.env.NODE_ENV == 'production',
   // context: authMiddleware,
 });
 
