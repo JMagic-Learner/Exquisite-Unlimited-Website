@@ -1,9 +1,10 @@
 import React from 'react'
+import {useEffect,useState} from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../Utils/queries';
 
 function Shop() {
-
+    const [Selection, setSelection] = useState("Default");
     const  {loading,error, data } = useQuery(QUERY_PRODUCTS);
     if (loading) {
       console.log("We have queried the server")
