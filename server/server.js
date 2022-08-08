@@ -16,13 +16,13 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // playground: true,
-  playground: {
-		endpoint: `https://exquisite-unlimited-website.herokuapp.com/graphql`,
-		settings: {
-      		'editor.theme': 'dark'
-    	},
-    },
+  playground: true,
+  // playground: {
+	// 	endpoint: `https://exquisite-unlimited-website.herokuapp.com/graphql`,
+	// 	settings: {
+  //     		'editor.theme': 'dark'
+  //   	},
+  //   },
   introspection: true,
   // context: authMiddleware,
 });
