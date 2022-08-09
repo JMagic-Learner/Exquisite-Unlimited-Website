@@ -181,4 +181,19 @@ margin-top:1%;
   }
 } */
 
+.catalogue{
+  width:80%;
+  display:flex;
+  margin:auto;
+}
 
+.product-card{
+  width:50%;
+  margin:1%;
+  background-color:ivory;
+  box-shadow:inset;
+}
+
+.product-description{
+  font-size: 1.5vh;
+}

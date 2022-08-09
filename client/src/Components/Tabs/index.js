@@ -5,7 +5,8 @@ function Tabs(props) {
 
     return(
         <div className="horizontal-container border rounded">
-            <div className="Tab-Image-Container"
+            <a className="nav-link " href="/shop">
+                <div className="Tab-Image-Container"
             style={
                 { 
                 backgroundImage: `url(${backdrop})`,
@@ -16,7 +17,7 @@ function Tabs(props) {
                             <h2 className=" font-weight-light"> {content} </h2>
                     </div>
             </div>
-            
+            </a>
         </div>
     )
 }

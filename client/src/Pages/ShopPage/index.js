@@ -33,11 +33,22 @@ return(
           </section>
       </div>
   
-  {ProductArray.map((element) => {
-    return(
-        <p> {element.name} </p>
+
+  <div className="catalogue">
+    {ProductArray.map((element) => {
+      return(
+        <div className="product-card">
+           <p className="product-title"> {element.name} </p>
+          <div className="product-description ">
+             <p> {element.description} </p>
+          </div>
+          <div className="product-description ">
+             <p> {element.price} </p>
+          </div>
+        </div>
     )
-  })}
+    })}
+    </div>
   </div>
 )
 }
