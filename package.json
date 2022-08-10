@@ -25,7 +25,8 @@
     "start": "cd client && npm run start",
     "build": "cd client && npm run build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd server && npm run start"
   },
   "eslintConfig": {
     "extends": [
