@@ -26,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
 
 
 const httpLink = createHttpLink({
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql',
+  uri: 'https://exquisite-unlimited-website.herokuapp.com/shop/graphql',
   // uri: `http://localhost:4000/graphql`,
 });
 
