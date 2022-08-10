@@ -17,23 +17,18 @@ import { setContext } from '@apollo/client/link/context';
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-    },
-  };
+  return headers
 });
 
 
 const httpLink = createHttpLink({
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/shop/graphql',
+  uri: 'graphql',
   // uri: `http://localhost:4000/graphql`,
 });
 
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: httpLink,
- 
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
