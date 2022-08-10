@@ -8,9 +8,9 @@ function Shop() {
     const  {loading,error, data } = useQuery(QUERY_PRODUCTS);
     if (loading) {
       console.log("We have queried the server")
-      console.log(loading)
     }
     if (error) {
+      console.log("We have encountered an error")
       console.log(error)
     }
     if (data) {
