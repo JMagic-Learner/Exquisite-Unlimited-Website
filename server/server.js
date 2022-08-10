@@ -43,6 +43,7 @@ app.get('*', (req, res) => {
   }
   if (res) {
     console.log("A response has been generated");
+    console.log(res)
   }
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
