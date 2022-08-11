@@ -21,10 +21,11 @@ async function startApolloServer() {
   });
   await server.start();
   const app = express();
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
+ 
 
   server.applyMiddleware({ app });
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
@@ -41,16 +42,6 @@ async function startApolloServer() {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 
-  app.get('/graphql', (req,res) => {
-    if (req) {
-      console.log("A request has been sent");
-    }
-    if (res) {
-      console.log("A response has been generated");
-      console.log(res)
-    }
-    console.log("we are hitting the graphQl server")
-  })
 
 
   db.once('open', () => {
