@@ -23,7 +23,8 @@ async function startApolloServer() {
   const app = express();
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-  
+
+
   // Serve static files (js/css)
   app.use(express.static(path.join(__dirname, "../client/build")));
   
@@ -35,8 +36,6 @@ async function startApolloServer() {
       res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
   
-
-
 
     db.once('open', () => {
     app.listen(PORT, () => {
