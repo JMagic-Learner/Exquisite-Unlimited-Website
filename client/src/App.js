@@ -15,15 +15,18 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  // return the headers to the context so httpLink can read them
-  return headers
+  // if (NODE_ENV=="Production") {
+  //   return "https://exquisite-unlimited-website.herokuapp.com/graphql"
+  // } else {
+  //   return "http://localhost:4000/shop"
+  // }
+
 });
 
 
 const httpLink = createHttpLink({
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql',
-  // uri: `http://localhost:4000/graphql`,
+  // uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql',
+  uri: `/graphql`,
 });
 
 const client = new ApolloClient({
