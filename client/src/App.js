@@ -15,26 +15,25 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 const authLink = setContext((_, { headers }) => {
-  // if (NODE_ENV=="Production") {
-  //   return "https://exquisite-unlimited-website.herokuapp.com/graphql"
-  // } else {
-  //   return "http://localhost:4000/shop"
-  // }
-
+  // get the authentication token from local storage if it exists
+ 
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+    },
+  };
 });
 
 
 const httpLink = createHttpLink({
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql',
-  // uri: `http://localhost:27017/graphql`,
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-  playground: true,
-  introspection: true,
 });
 
 function App() {
