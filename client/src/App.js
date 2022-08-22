@@ -5,44 +5,11 @@ import Home from './Pages/HomePage'
 import About from './Pages/AboutPage'
 import Shop from './Pages/ShopPage';
 import {  BrowserRouter, Routes, Route} from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-  gql
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-
-
-
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
- 
-  // return the headers to the context so httpLink can read them
-
-    return headers
-
-});
-
-
-const httpLink = createHttpLink({
-  // uri: 'http://localhost:4000/graphql'
-  uri: 'https://exquisite-unlimited-website.herokuapp.com/graphql'
-});
-
-const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: httpLink,
-  cache: new InMemoryCache(),
-  playground:true,
-  introspection:true
-});
 
 function App() {
   return (
     <div className="App">
-        <ApolloProvider client={client}>
+   
       <BrowserRouter>
       <Navigation/>
       <Routes>
@@ -51,7 +18,7 @@ function App() {
             <Route exact path="/shop" element={<Shop/>}/>
        </Routes>
        </BrowserRouter>
-       </ApolloProvider>
+     
 
     </div>
   );

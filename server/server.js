@@ -1,63 +1,35 @@
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const path = require('path');
-const cors = require('cors');
+const { ApolloServer, gql } = require('apollo-server');
 require('dotenv').config();
-
-
 const { typeDefs, resolvers } = require('./schemas');
-
-
 const db = require('./config/connection');
 
-const PORT = process.env.PORT || 4000;
+const {
+    ApolloServerPluginLandingPageLocalDefault
+  } = require('apollo-server-core');
 
-async function startApolloServer() {
+
   const server = new ApolloServer({
-      typeDefs,
-      resolvers,
-      playground: true,
-      introspection: true,
-  });
-  await server.start();
-  const app = express();
-  app.use(express.urlencoded({ extended: false }));
-  app.use(express.json());
-
-
-  // Serve static files (js/css)
-  app.use(express.static(path.join(__dirname, "../client/build")));
-  
-  // Serve the graphql endpoint
-  server.applyMiddleware({ app });
-  
-  // Fallback to index.html for all other (not yet matched) routes
-  app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../client/build/index.html"));
-  });
-  
-
-    db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    });
+    typeDefs,
+    resolvers,
+    csrfPrevention: true,
+    cache: 'bounded',
+    /**
+     * What's up with this embed: true option?
+     * These are our recommended settings for using AS;
+     * they aren't the defaults in AS3 for backwards-compatibility reasons but
+     * will be the defaults in AS4. For production environments, use
+     * ApolloServerPluginLandingPageProductionDefault instead.
+    **/
+    plugins: [
+      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+    ],
   });
 
 
+      db.once('open', () => {
+        server.listen().then(({ url }) => {
+            console.log(`🚀  Server ready at ${url}`);
+          });
+  });
  
- 
-  // await new Promise(resolve => app.listen({ port: 4000 }, resolve));
-  // console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-  return { server, app };
-  }
-
-startApolloServer();
-
-
-
-
-
-
-// db.objectives.find().sort( { category: -1 } );
 
