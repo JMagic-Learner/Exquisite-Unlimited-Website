@@ -28,3 +28,17 @@ export const QUERY_PRODUCTS = gql`
         size
     }
   }`
+
+  export const QUERY_CATEGORY = gql`
+  query productCategory($category: String!) {
+    productCategory(category: $category){
+        _id
+        name
+        category
+        description
+        price
+        serial
+        quantity
+        size
+    }
+  }`
