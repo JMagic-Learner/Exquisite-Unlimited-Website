@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/',
+    uri: 'https://exquisite-unlimited-website.herokuapp.com/',
     cache: new InMemoryCache(),
   });
 const root = ReactDOM.createRoot(document.getElementById('root'));
