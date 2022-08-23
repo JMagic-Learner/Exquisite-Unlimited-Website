@@ -35,6 +35,12 @@ function Shop() {
 
       <div className="row">
         <section className="shop-menu">
+          <button type="button" className="btn btn-primary shop-menu-button" name="Welcome" onClick={categoryFilter}> Show All </button>
+        </section>
+      </div>
+
+      <div className="row">
+        <section className="shop-menu">
           <button type="button" className="btn btn-primary shop-menu-button" name="Engraving" onClick={categoryFilter}> Engraving </button>
           <button type="button" className="btn btn-primary shop-menu-button" name="Oil" onClick={categoryFilter}> Oil </button>
           <button type="button" className="btn btn-primary shop-menu-button" name="Contemporary" onClick={categoryFilter}> Contemporary </button>
