@@ -184,13 +184,15 @@ margin-top:1%;
 .catalogue{
   width:80%;
   display:flex;
+  flex-wrap: wrap;
   margin:auto;
 }
 
 .product-card{
-  width:50%;
+  min-width:18%;
+  height:250px;
   margin:1%;
-  background-color:ivory;
+  background-color:lightblue;
   box-shadow:inset;
 }
 

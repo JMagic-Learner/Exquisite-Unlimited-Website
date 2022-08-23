@@ -5,6 +5,7 @@ export const QUERY_PRODUCTS = gql`
   query getProducts {
     products {
       _id
+      pictureID
       name
       category
       description
@@ -19,6 +20,7 @@ export const QUERY_PRODUCTS = gql`
   query getProduct($name: String!) {
     product(name: $name){
         _id
+        pictureID
         name
         category
         description
@@ -33,6 +35,7 @@ export const QUERY_PRODUCTS = gql`
   query productCategory($category: String!) {
     productCategory(category: $category){
         _id
+        pictureID
         name
         category
         description
