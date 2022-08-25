@@ -23,7 +23,7 @@
     "seed": "cd server && npm run seed",
     "start": "cd client && npm run start",
     "build": "cd client && npm run build",
-    "test": "react-scripts test",
+    "test": "cd client && npm run test",
     "eject": "react-scripts eject",
     "server": "cd server && npm run start"
   },

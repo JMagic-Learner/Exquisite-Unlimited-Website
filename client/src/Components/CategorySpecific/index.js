@@ -20,24 +20,29 @@ function CategorySpecific(props) {
     const ProductArray = data?.productCategory || [];
 
     return (
-        <div className="category Shop-Container">
+       
             <div className="catalogue">
 
                 {ProductArray.map((element) => {
                     return (
-                        <div className="product-card">
-                            <p className="product-title"> {element.name} </p>
-                            <div className="product-description ">
+                        <div className="card product-card ">
+                            <div className="card-body">
+                            <p className="card-title"> {element.name} </p>
+                            {element.category==="Engraving" && 
+                          <img src={require(`../../Assets/img/Products/${element.category}/${element.serial}.jpg`)} className="card-img-top product-image" alt="..."/>
+            }
+                            <div className="card-text ">
                                 <p> {element.description} </p>
                             </div>
-                            <div className="product-description ">
+                            <div className="card-text ">
                                 <p> {element.price} </p>
+                            </div>
                             </div>
                         </div>
                     )
                 })}
             </div>
-        </div>
+        
     )
 }
 
