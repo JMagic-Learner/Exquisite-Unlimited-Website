@@ -1,13 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import CategorySpecific from '../../Components/CategorySpecific';
-import EngImg1 from '../../Assets/img/Products/Engraving/EU05MY9079.jpg'
-import EngImg2 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
-import EngImg3 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
-import EngImg4 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
-import EngImg5 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
-import EngImg6 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
-import EngImg7 from '../../Assets/img/Products/Engraving/EU05MY8033.jpg'
 
 
 
@@ -71,9 +64,9 @@ function Shop(props) {
               <div className="card product-card ">
                             <div className="card-body">
                             <p className="card-title"> {element.name} </p>
-                            {element.category==="Engraving" && 
-                          <img src={require(`../../Assets/img/Products/${element.category}/${element.serial}.jpg`)} className="card-img-top product-image" alt="..."/>
-            }
+                         
+                            <img src={require(`../../Assets/Products/${element.category}/${element.description}.jpg`)} className="card-img-top product-image" alt="..."/>
+            
                             <div className="card-text ">
                                 <p> {element.description} </p>
                             </div>
