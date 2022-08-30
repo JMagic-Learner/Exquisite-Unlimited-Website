@@ -28,9 +28,9 @@ function CategorySpecific(props) {
                         <div className="card product-card ">
                             <div className="card-body">
                             <p className="card-title"> {element.name} </p>
-                            {element.category==="Oil" && 
+                         
                           <img src={require(`../../Assets/Products/${element.category}/${element.description}.jpg`)} className="card-img-top product-image" alt="..."/>
-            }
+            
                             <div className="card-text ">
                                 <p> {element.description} </p>
                             </div>
