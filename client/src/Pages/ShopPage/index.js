@@ -61,7 +61,7 @@ function Shop(props) {
 
           {product.map((element,index) => {
             return (
-              <div className="card product-card ">
+              <form className="card product-card ">
                             <div className="card-body">
                             <p className="card-title"> {element.name} </p>
                          
@@ -76,11 +76,13 @@ function Shop(props) {
                             </div>
                             <button className="btn btn-outline-secondary shop-menu-button"
                                 type="submit"
-                                name="FAQ"
+                                id={element.pictureID}
+                                value={element.price}
+                                name={element.name}
                                 data-bs-toggle="modal"
                                 data-bs-target="#OrderModal"
-                                onClick={FAQ}> Order </button>
-                            </div>
+                                onSubmit={FAQ}> Order </button>
+                            </form>
             )
           })}
         </div>
