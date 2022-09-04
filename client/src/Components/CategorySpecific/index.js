@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORY } from '../../Utils/queries'
+import Order from '../Order/index.js'
 
 function CategorySpecific(props) {
-    const { categoryName } = props
+    const { categoryName, childFunction } = props
     const { loading, error, data } = useQuery(QUERY_CATEGORY, {variables: { category: categoryName }},);
     if (loading) {
         console.log("We have queried the server")
@@ -18,6 +19,13 @@ function CategorySpecific(props) {
     }
 
     const ProductArray = data?.productCategory || [];
+    const [SelectedOrder, setSelectedOrder] = useState("");
+
+    const recordOrder = (event) => {
+        event.preventDefault()
+        let selectedProduct = event.target.name
+        setSelectedOrder(selectedProduct)
+    }
 
     return (
        
@@ -31,16 +39,27 @@ function CategorySpecific(props) {
                          
                           <img src={require(`../../Assets/Products/${element.category}/${element.description}.jpg`)} className="card-img-top product-image" alt="..."/>
             
-                            <div className="card-text ">
-                                <p> {element.description} </p>
-                            </div>
+                            
                             <div className="card-text ">
                                 <p> {element.price} </p>
                             </div>
+
+                            <button className="btn btn-outline-secondary order-button " 
+                                type="button"
+                                id={element.pictureID}
+                                value={element.price}
+                                name={element.name}
+                                data-bs-toggle="modal"
+                                data-bs-target="#OrderModal"
+                                onClick={recordOrder}
+                                > Order </button>
                             </div>
+                           
                         </div>
                     )
                 })}
+
+<Order graphQLInput={SelectedOrder} childFunction={childFunction} />
             </div>
         
     )

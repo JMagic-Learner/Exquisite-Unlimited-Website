@@ -8,7 +8,7 @@ const typeDefs = gql`
     name: String
     description: String
     price: Int
-    serial: Array
+    serial: [String]
     quantity: Int
     size: String
   }
@@ -16,6 +16,7 @@ const typeDefs = gql`
   type Query {
     products: [Product]
     product(name: String!): Product
+    productCategory(category: String!): [Product]
   }
 
   type Mutation {
