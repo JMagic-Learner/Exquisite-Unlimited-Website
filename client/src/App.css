@@ -67,7 +67,7 @@
 
 .Tab-Image-Container{
   margin:1%;
-  height:300px;
+  height:25vw;
   opacity:0.1;
   z-index:-1;
   transition: opacity 0.5s ease-in-out;
@@ -76,7 +76,7 @@
 
 .Tab-Image-Container:hover{
   margin:1%;
-  height:300px;
+  height:25vw;
   opacity:1;
   z-index:-1;
   transition: opacity 0.5s ease-in-out;
@@ -199,19 +199,57 @@ margin-top:1%;
     position: relative;
     /* top:50%;
     left: 50%; */
-    color:black;
+    color:white;
     transform: translate(-50%, 50%);
   }
   .banner-overlay {
-    z-index:1;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display:none;
   }
   .Banner-Image-Container {
     right:50%;
   }
+  .column-image{
+    margin-top:25%;
+    height:1300px;
+    background-position: center;
+  }
+  .catalogue{
+    width:60%;
+    display:flex;
+    flex-wrap: wrap;
+    margin:auto;
+  }
+  .product-card{
+    width:100%;
+    height:75vw;
+    margin:auto;
+    box-shadow:inset;
+    background-color:#f5f4f4;
+    transition: background-color 0.5s ease-in-out
+  }
+  
+  .product-card:hover{
+    background-color:white;
+    transition:  background-color 0.5s ease-in-out
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .wide-view{
+    display:none;
+  }
+  .tab-text{
+    z-index:2;
+    position: relative;
+    color:white;
+    transform: translate(-50%, 50%);
+  }
+  .banner-overlay {
+    display:none;
+  }
+
   .column-image{
     margin-top:25%;
     height:1300px;

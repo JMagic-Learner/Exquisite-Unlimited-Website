@@ -1,14 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export const EmailOrder = (props) => {
     const {orderArray, totalAmount} = props
+    const [text,setText] = useState("Copy/paste your order here;");
     const form = useRef();
 
+
+    const handleChange = (event) => {
+      event.preventDefault()
+      const { name, value } = event.target;
+      setText(value)
+  }
  
   const sendEmail = (e) => {
     e.preventDefault();
-
+    console.log(e.target.placeHolder)
     emailjs.sendForm('service_exquisite', 'template_dm7fmbr', form.current, 'xH1ueJRoUuH48Sv_H')
       .then((result) => {
           console.log(result)
@@ -16,6 +23,7 @@ export const EmailOrder = (props) => {
       }, (error) => {
           console.log(error.text);
       });
+    setText("Copy/paste your order here;")
   };
 
   return (
@@ -25,7 +33,7 @@ export const EmailOrder = (props) => {
       <label>Customer Email</label>
       <input className="orderLabel" type="email" name="email" />
       <label> Invoice (Copy Paste Cart) </label>
-      <textarea className="invoice" name="message"/>
+      <textarea className="invoice" name="message" onChange={handleChange} value={text}/>
       <button className="btn btn-outline-secondary shop-menu-button" type="submit" value="Send" > ORDER </button>
     </form>
   );

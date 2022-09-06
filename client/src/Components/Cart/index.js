@@ -47,7 +47,7 @@ export default function Cart(props) {
                 {orderArray.map((item, index) => {
                     return (
 
-
+                        <tbody>
                         <tr className="cart-font">
                             <th scope="row"> #{index + 1}</th>
                             <td>{item.name}</td>
@@ -56,6 +56,7 @@ export default function Cart(props) {
                             <td>{item.quantity * item.price}</td>
                             <button id={item.name} className="btn btn-outline-secondary" onClick={deleteFunction}> X </button>
                         </tr>
+                        </tbody>
 
 
                     )

@@ -8,18 +8,11 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from './Utils/queries';
 import {  BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 
-const NoMatch = () => <div>No match</div>
-
-export const LocationDisplay = () => {
-  const location = useLocation()
-
-  return <div data-testid="location-display">{location.pathname}</div>
-}
 
 function App() {
 
   // Prefetchinig the Product catalogue prior to end-user clicking submit.
-  const { loading, error, data } = useQuery(QUERY_PRODUCTS);
+  const  { loading, error, data } = useQuery(QUERY_PRODUCTS)
     if (loading) {
     console.log("We have queried the server")
   }
@@ -35,6 +28,7 @@ function App() {
   const ProductArray = data?.products || [];
 
 
+
   return (
     <div className="App">
    
@@ -43,13 +37,13 @@ function App() {
       <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route exact path="/about" element={<About />}/>
-            <Route exact path="/shop" element={<Shop product={ProductArray} reroute="Welcome"/>} />
-            <Route exact path="/shop/Oil" element={<Shop product={ProductArray} reroute="Oil"/>} />
-            <Route exact path="/shop/Engraving" element={<Shop product={ProductArray} reroute="Engraving"/>}/>
-            <Route exact path="/shop/Contemporary" element={<Shop product={ProductArray} reroute="Contemporary"/>}/>
+            <Route exact path="/shop" element={<Shop product={ProductArray} reroute="Welcome" />}  />
+            <Route exact path="/shop/Oil" element={<Shop product={ProductArray} reroute="Oil" />} />
+            <Route exact path="/shop/Engraving" element={<Shop product={ProductArray} reroute="Engraving" /> }/>
+            <Route exact path="/shop/Contemporary" element={<Shop product={ProductArray} reroute="Contemporary" />}/>
             
        </Routes>
-       <LocationDisplay />
+     
        </BrowserRouter>
      
        

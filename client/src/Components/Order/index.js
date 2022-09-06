@@ -58,7 +58,7 @@ function Order(props) {
 
 
     return (
-        <form className="modal fade" id="OrderModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form className="modal fade" id="OrderModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -75,7 +75,7 @@ function Order(props) {
                                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Select Serial Number
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul className="dropdown-menu">
                                     {SerialNumbers.map((item,index)=>{
                                         return  <li>  
                                             <a className="dropdown-item text-black " 

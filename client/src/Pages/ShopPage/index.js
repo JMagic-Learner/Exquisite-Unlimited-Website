@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useQuery } from '@apollo/client';
+import { QUERY_PRODUCTS } from '../../Utils/queries';
 import CategorySpecific from '../../Components/CategorySpecific';
 import Cart from "../../Components/Cart"
 import FAQComponent from '../../Components/FAQComponent';
@@ -11,7 +13,6 @@ import EmailOrder from '../../Components/EmailOrder';
 function Shop(props) {
   const { product, reroute } = props
   const [Selection, setSelection] = useState(reroute);
-  const [SelectedOrder, setSelectedOrder] = useState("");
   const [CartArray, setCartArray] = useState([])
   const [total,setTotal] = useState(0)
 
@@ -26,6 +27,8 @@ function Shop(props) {
   const FAQ = (event) => {
     event.preventDefault()
   }
+
+  
 
   const liftedState = (OrderInput) => {
     console.log("This is the order selected", OrderInput)
@@ -42,7 +45,6 @@ function Shop(props) {
   }
 
   useEffect(() => {
-    console.log(CartArray)
     let temporary = []
     CartArray.forEach((item)=>{
       if (item.quantity>1) {
@@ -54,9 +56,7 @@ function Shop(props) {
         temporary.push(item.price)}
       }
     )
-    console.log(temporary)
     let sum = temporary.reduce((pv, cv) => pv + cv, 0);
-    console.log(sum)
     setTotal(sum)
   }, [CartArray])
 

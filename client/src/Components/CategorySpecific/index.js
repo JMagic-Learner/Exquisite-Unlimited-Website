@@ -33,7 +33,7 @@ function CategorySpecific(props) {
 
                 {ProductArray.map((element) => {
                     return (
-                        <div className="card product-card ">
+                        <div className="card product-card " key={element.serial}>
                             <div className="card-body">
                             <p className="card-title"> {element.name} </p>
                          

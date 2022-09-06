@@ -10,7 +10,7 @@ function Home() {
     return(
         <div className="homepage-container ">
                  <Banner/>
-
+                 
         <div className='homepage-container-lower'>
       
                 <Tabs className="tab-text" content="Oil" backdrop={Image3}/>
