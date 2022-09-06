@@ -2,8 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import CategorySpecific from '../../Components/CategorySpecific';
 import Cart from "../../Components/Cart"
-import Order from "../../Components/Order"
-
+import FAQComponent from '../../Components/FAQComponent';
+import CategoryAll from '../../Components/CategoryAll';
+import EmailOrder from '../../Components/EmailOrder';
 
 
 
@@ -15,6 +16,8 @@ function Shop(props) {
   const [Selection, setSelection] = useState("Welcome");
   const [SelectedOrder, setSelectedOrder] = useState("");
   const [CartArray, setCartArray] = useState([])
+  const [total,setTotal] = useState(0)
+
 
   const categoryFilter = (event) => {
     event.preventDefault()
@@ -27,13 +30,6 @@ function Shop(props) {
     event.preventDefault()
   }
 
-  const recordOrder = (event) => {
-    event.preventDefault()
-    let selectedProduct = event.target.name
-    setSelectedOrder(selectedProduct)
-
-  }
-
   const liftedState = (OrderInput) => {
     console.log("This is the order selected", OrderInput)
     setCartArray([
@@ -42,8 +38,29 @@ function Shop(props) {
     ]);
   }
 
+  const removeFromCart = (RemoveOrder) => {
+    console.log("This is the order selected", RemoveOrder)
+    let filteredCart = CartArray.filter((item)=> item.name != RemoveOrder)
+    setCartArray(filteredCart)
+  }
+
   useEffect(() => {
     console.log(CartArray)
+    let temporary = []
+    CartArray.forEach((item)=>{
+      if (item.quantity>1) {
+        let quantity = item.quantity
+        for(let i = 0; i< quantity; i++) {
+          temporary.push(item.price)
+        }
+      } else {
+        temporary.push(item.price)}
+      }
+    )
+    console.log(temporary)
+    let sum = temporary.reduce((pv, cv) => pv + cv, 0);
+    console.log(sum)
+    setTotal(sum)
   }, [CartArray])
 
   return (
@@ -64,79 +81,24 @@ function Shop(props) {
             data-bs-toggle="modal"
             data-bs-target="#FAQModal"
             onClick={FAQ}> FAQ </button>
-          <Cart orderArray={CartArray} />
+          <Cart orderArray={CartArray} totalAmount={total} removeFunction={removeFromCart}/>
+          <EmailOrder orderArray={CartArray}/>
         </section>
 
 
 
         {Selection === "Welcome" && (
-          <div className="catalogue">
+          <CategoryAll array={product} childFunction={liftedState}/>
 
-            {product.map((element, index) => {
-              return (
-                <div className="card product-card ">
-                  <div className="card-body">
-                    <p className="card-title"> {element.name} </p>
-
-                    <img src={require(`../../Assets/Products/${element.category}/${element.description}.jpg`)} className="card-img-top product-image" alt="..." />
-
-                    <div className="card-text ">
-                      <p> {element.price} </p>
-                    </div>
-                    <div className="card-text">
-                      <button className="btn btn-outline-secondary order-button "
-                        type="button"
-                        id={element.pictureID}
-                        value={element.price}
-                        name={element.name}
-                        data-bs-toggle="modal"
-                        data-bs-target="#OrderModal"
-                        onClick={recordOrder}
-                      > Order </button>
-                    </div>
-                  </div>
-
-
-                </div>
-              )
-            })}
-          </div>
         )}
 
         {Selection !== "Welcome" && (
           <CategorySpecific categoryName={Selection} childFunction={liftedState}/>
         )}
 
-        <form className="modal fade" id="FAQModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Commonly Asked Questions</h5>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div className="modal-body d-flex">
-                <div className="input-group mb-3">
-                  <p> Question: How do I place an order? </p>
-                  <p> Answer: Placing an order is simple. Click on the order button found on each item.</p>
-                  <p> Clicking on the order button will bring a modal for you to fill out. This modal is sent to our order processing department.</p>
-
-                  <p> Question: Will the paintings be shipped? </p>
-                  <p> Answer: Unfortunately, the paintings cannot be shipped at the moment. Our paintings will have to be picked up by the customer.</p>
-                </div>
-              </div>
-
-
-
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" >Save changes</button>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <Order graphQLInput={SelectedOrder} childFunction={liftedState} />
+      
+        <FAQComponent/>
+       
 
 
       </div>

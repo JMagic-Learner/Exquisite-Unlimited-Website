@@ -6,6 +6,7 @@ function Order(props) {
 
     const { graphQLInput, childFunction } = props
     const [selected, setSelected] = useState("")
+    const [quantity, setQuantity] = useState(1)
     const { loading, error, data } = useQuery(QUERY_SINGLE_PRODUCT, { variables: { name: graphQLInput } },);
     if (loading) {
         console.log("We have queried the server")
@@ -33,17 +34,25 @@ function Order(props) {
         setSelected(event.target.id)
     }
 
+    const selectedQuantity = (event )=>{
+        event.preventDefault()
+        console.log(event.target.id)
+        setQuantity(event.target.id)
+    }
+
     const SaveAndRemove = (event) =>{
         event.preventDefault()
         childFunction(
             {
               name: SingleProduct.name,
               serial: selected,
-              price: SingleProduct.price
+              price: SingleProduct.price,
+              quantity: quantity
             }
         )
             
         setSelected("")
+        setQuantity(1)
         
     }
 
@@ -58,9 +67,11 @@ function Order(props) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
+                   
+
                     <div className="modal-body d-flex">
                         <div className="input-group mb-3">
-                            <div className="dropdown">
+                        <label className="dropdown">
                                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Select Serial Number
                                 </button>
@@ -74,16 +85,54 @@ function Order(props) {
                                                 {JSON.stringify(SerialNumbers[index])}
                                             </a>
                                         </li>
-                                    })}
-                                    
-                                    
+                                    })} 
                                 </ul>
-                            </div>
-                        </div>
+                                
+                            </label>
+                        <input type="text" id="serial-output" name="serial-output" value={selected}></input>  
+                        </div>       
                     </div>
 
                     <div className="modal-body d-flex">
-                        Serial Number: {selected}
+                    <div className="input-group mb-3">
+                        <label className="dropdown">
+                                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Quantity
+                                </button>
+                                <ul class="dropdown-menu">
+                                      <li>  
+                                            <a className="dropdown-item text-black " 
+                                               id={1}
+                                               onClick={selectedQuantity}>
+                                                1
+                                            </a>
+                                            <a className="dropdown-item text-black " 
+                                               id={2}
+                                               onClick={selectedQuantity}>
+                                                2
+                                            </a>
+                                            <a className="dropdown-item text-black " 
+                                               id={3}
+                                               onClick={selectedQuantity}>
+                                                3
+                                            </a>
+                                            <a className="dropdown-item text-black " 
+                                               id={4}
+                                               onClick={selectedQuantity}> 
+                                               4
+                                            </a>
+                                            <a className="dropdown-item text-black " 
+                                              id={5}
+                                               onClick={selectedQuantity}> 
+                                               5
+                                            </a>
+                                        </li>
+                                  
+                                </ul>
+                                
+                            </label>
+                        <input type="text" id="serial-output" name="serial-output" value={quantity}></input>  
+                        </div>       
                     </div>
 
 

@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<DocumentFragment>
+  <div
+    class="About-Container"
+  >
+    <h1
+      class="text-black font-italic"
+    >
+       "Life revolves around Color" 
+    </h1>
+    <div
+      class="row"
+    >
+      <div
+        class="col column-image"
+        style="background-image: url(about-column.jpg);"
+      />
+      <div
+        class="col"
+      >
+        <section
+          class="about"
+        >
+          <h2>
+             2008, The world turned upside down 
+          </h2>
+          <div
+            class="paragraph text-justify"
+          >
+            Faced with a world-economy that was free-falling, we saw opportunity to plant seeds for a long term goal. We wanted to bring color to households, on an affordable price tag.
+          </div>
+        </section>
+        <section
+          class="about"
+        >
+          <h2>
+             Our Products 
+          </h2>
+          <div
+            class="paragraph text-justify"
+          >
+            Exquisite Unlimited LLC carries three primary types of paintings
+          </div>
+        </section>
+        <section
+          class="about"
+        >
+          <h4>
+             Engravings 
+          </h4>
+          <div
+            class="paragraph text-justify"
+          >
+            Engravings are paintings that incorporate 3D-topography. Traditional paintings are purely 2d, but our Engraving product line are sculpted murals to be hanged on your walls. Made with a variety of metals, these paintings weigh the heaviest. Subjects of this product line range from religious iconography, to mythical landscapes and creatures.
+          </div>
+        </section>
+        <section
+          class="about"
+        >
+          <h4>
+             Oils
+          </h4>
+          <div
+            class="paragraph text-justify"
+          >
+            Our Oil paintings sport the most vibrant color assortment of our product range. Depicting villas, cities, fields, forests and more in vivid colors, Oils are our main product line.
+          </div>
+        </section>
+        <section
+          class="about"
+        >
+          <h4>
+             Contemporary 
+          </h4>
+          <div
+            class="paragraph text-justify"
+          >
+            The Contemporary product line highlights art styles from the 1980's onward. This product range includes abstract expressionism,modernism, surrealism, geometric etc
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
