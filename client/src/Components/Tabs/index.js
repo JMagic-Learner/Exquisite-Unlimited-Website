@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link, Route, Routes, useLocation} from 'react-router-dom'
 
 function Tabs(props) {
     const {content, backdrop} = props
 
     return(
         <div className="horizontal-container border rounded">
-            <a className="nav-link " href={`/shop/${content}`}>
+            <Link className="nav-link " to={`/shop/${content}`}>
                 <div className="Tab-Image-Container"
             style={
                 { 
@@ -17,7 +18,7 @@ function Tabs(props) {
                             <h2 className=" font-weight-light"> {content} </h2>
                     </div>
             </div>
-            </a>
+            </Link>
         </div>
     )
 }

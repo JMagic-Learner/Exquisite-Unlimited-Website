@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, Route, Routes, useLocation} from 'react-router-dom'
 
 function Navigation () {
 
@@ -15,19 +16,19 @@ function Navigation () {
           <div className="navbar-collapse collapse justify-content-end  " id="navbarDefault">
             <ul className="navbar-nav">
               <li className="nav-item hover-action ">
-                <a className="nav-link  active" href="/">Home</a>
+                <Link className="nav-link  active" to="/">Home</Link>
               </li>
               <li className="nav-item hover-action " >
-                <a className="nav-link " href="/about">About</a>
+              <Link  className="nav-link " to="/about">About</Link>
               </li>
               <li className="nav-item hover-action " >
-                <a className="nav-link " href="/shop">Shop</a>
+              <Link  className="nav-link " to="/shop">Shop</Link>
               </li>
               <li className="nav-item hover-action ">
-                <a className="nav-link" href="#contact">Contact</a>
+              <Link className="nav-link" to="/contact">Contact</Link>
               </li>
               <li className="nav-item hover-action ">
-                <a className="nav-link" href="#FaceBook">Facebook</a>
+                <Link className="nav-link" to="/FaceBook">Facebook</Link>
               </li>
             </ul>
           </div>

@@ -6,9 +6,15 @@ import About from './Pages/AboutPage'
 import Shop from './Pages/ShopPage';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from './Utils/queries';
-import {  BrowserRouter, Routes, Route} from 'react-router-dom';
+import {  BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 
+const NoMatch = () => <div>No match</div>
 
+export const LocationDisplay = () => {
+  const location = useLocation()
+
+  return <div data-testid="location-display">{location.pathname}</div>
+}
 
 function App() {
 
@@ -28,6 +34,7 @@ function App() {
 
   const ProductArray = data?.products || [];
 
+
   return (
     <div className="App">
    
@@ -42,9 +49,10 @@ function App() {
             <Route exact path="/shop/Contemporary" element={<Shop product={ProductArray} reroute="Contemporary"/>}/>
             
        </Routes>
+       <LocationDisplay />
        </BrowserRouter>
      
-
+       
     </div>
   );
 }
