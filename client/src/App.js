@@ -36,7 +36,11 @@ function App() {
       <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route exact path="/about" element={<About />}/>
-            <Route exact path="/shop" element={<Shop product={ProductArray}/>}/>
+            <Route exact path="/shop" element={<Shop product={ProductArray} reroute="Welcome"/>} />
+            <Route exact path="/shop/Oil" element={<Shop product={ProductArray} reroute="Oil"/>} />
+            <Route exact path="/shop/Engraving" element={<Shop product={ProductArray} reroute="Engraving"/>}/>
+            <Route exact path="/shop/Contemporary" element={<Shop product={ProductArray} reroute="Contemporary"/>}/>
+            
        </Routes>
        </BrowserRouter>
      

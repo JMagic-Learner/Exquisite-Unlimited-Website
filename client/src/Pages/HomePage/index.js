@@ -13,8 +13,8 @@ function Home() {
 
         <div className='homepage-container-lower'>
       
-                <Tabs className="tab-text" content="Oils" backdrop={Image3}/>
-                <Tabs className="tab-text" content="Engravings" backdrop={Image1}/>
+                <Tabs className="tab-text" content="Oil" backdrop={Image3}/>
+                <Tabs className="tab-text" content="Engraving" backdrop={Image1}/>
                 <Tabs className="tab-text" content="Contemporary" backdrop={Image2}/>
          
         </div>

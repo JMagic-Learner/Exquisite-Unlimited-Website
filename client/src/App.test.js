@@ -3,7 +3,7 @@ import { MockedProvider } from "@apollo/client/testing";
 import {BrowserRouter, MemoryRouter} from 'react-router-dom'
 import {QUERY_PRODUCTS} from './Utils/queries'
 import App from './App';
-import Shop from './Pages/ShopPage';
+import userEvent from '@testing-library/user-event'
 import About from './Pages/AboutPage';
 
 
@@ -30,19 +30,6 @@ test('Renders default application UI', () => {
   const NAVBAR = screen.getByText('Home')
   expect(linkElement).toBeInTheDocument();
   expect(NAVBAR).toBeInTheDocument();
-});
-
-test('Landing on About Page', () => {
-  const AboutRoute = '/about'
-  render(
-    <MockedProvider mocks={mocks} addTypename={false}> 
-    <App>
-      <MemoryRouter initialEntries={[AboutRoute]}>
-        <About />
-      </MemoryRouter>,
-    </App>
-      </MockedProvider>
-  )
 });
 
 

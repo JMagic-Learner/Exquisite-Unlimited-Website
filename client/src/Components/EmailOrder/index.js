@@ -21,11 +21,11 @@ export const EmailOrder = (props) => {
   return (
     <form ref={form} onSubmit={sendEmail}>
       <label>Customer Name</label>
-      <input type="text" name="from_name" />
+      <input className="orderLabel" type="text" name="from_name" />
       <label>Customer Email</label>
-      <input type="email" name="email" />
+      <input className="orderLabel" type="email" name="email" />
       <label> Invoice (Copy Paste Cart) </label>
-      <textarea name="message"/>
+      <textarea className="invoice" name="message"/>
       <button className="btn btn-outline-secondary shop-menu-button" type="submit" value="Send" > ORDER </button>
     </form>
   );

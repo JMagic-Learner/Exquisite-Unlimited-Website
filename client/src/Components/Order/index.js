@@ -9,7 +9,7 @@ function Order(props) {
     const [quantity, setQuantity] = useState(1)
     const { loading, error, data } = useQuery(QUERY_SINGLE_PRODUCT, { variables: { name: graphQLInput } },);
     if (loading) {
-        console.log("We have queried the server")
+        console.log("We have queried the server with ", graphQLInput)
     }
     if (error) {
         console.log("We have encountered an error")

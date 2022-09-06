@@ -5,7 +5,7 @@ function Tabs(props) {
 
     return(
         <div className="horizontal-container border rounded">
-            <a className="nav-link " href="/shop">
+            <a className="nav-link " href={`/shop/${content}`}>
                 <div className="Tab-Image-Container"
             style={
                 { 

@@ -9,11 +9,8 @@ import EmailOrder from '../../Components/EmailOrder';
 
 
 function Shop(props) {
-  const { product } = props
-
-
-
-  const [Selection, setSelection] = useState("Welcome");
+  const { product, reroute } = props
+  const [Selection, setSelection] = useState(reroute);
   const [SelectedOrder, setSelectedOrder] = useState("");
   const [CartArray, setCartArray] = useState([])
   const [total,setTotal] = useState(0)
