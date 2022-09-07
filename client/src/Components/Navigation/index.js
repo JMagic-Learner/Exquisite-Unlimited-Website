@@ -46,13 +46,12 @@ function Navigation() {
 
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container">
-  <h1><Link className="navbar-brand " to="/">Exquisite Unlimited</Link> </h1>
+  <Link className="navbar-brand " to="/">Exquisite Unlimited</Link> 
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul className="navbar-nav  ">
-
+    <div className="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+      <ul className="navbar-nav ml-auto">
             <li className="nav-item hover-action ">
               <Link className="nav-link  active" to="/">Home</Link>
            </li>
@@ -63,11 +62,11 @@ function Navigation() {
               <Link className="nav-link " to="/shop">Shop</Link>
             </li>
         <li className="nav-item dropdown">
-          <button className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button className="nav-link dropdown-toggle mobile-disable" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </button>
           <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" to="/"> Home </Link></li>
+            <li><Link  to="/"> Home </Link></li>
             <li><Link className="dropdown-item" to="/about"> About </Link></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li><Link className="dropdown-item" to="/shop"> Shop </Link></li>
