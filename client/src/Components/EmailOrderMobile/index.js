@@ -24,15 +24,29 @@ export const EmailOrderMobile = () => {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Customer Name</label>
-      <input className="orderLabel" type="text" name="from_name" />
-      <label>Customer Email</label>
-      <input className="orderLabel" type="email" name="email" />
-      <label> Invoice (Copy Paste Cart) </label>
-      <textarea className="invoice-mobile" name="message" onChange={handleChange} value={text}/>
-      <a className="btn btn-outline-secondary shop-menu-button" type="submit" value="Send" > ORDER </a>
+    <div className="modal-body d-flex">
+    <form ref={form} onSubmit={sendEmail}> 
+        <div className="input-group mb-3">
+            <label>Customer Name</label>
+            <input className="orderLabel" type="text" name="from_name" />
+        </div>
+
+
+
+        <div className="input-group mb-3">
+            <label>Customer Email</label>
+            <input className="orderLabel" type="email" name="email" />
+        </div>
+
+
+        <div className="input-group mb-3">
+            <label> Invoice (Copy Paste Cart) </label>
+            <textarea className="invoice-mobile" name="message" onChange={handleChange} value={text}/>
+        </div>
+
+<button className="btn btn-outline-secondary shop-menu-button" type="submit" value="Send" > ORDER </button>
     </form>
+</div>
   );
 };
 

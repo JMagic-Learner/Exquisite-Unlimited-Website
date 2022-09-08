@@ -7,15 +7,17 @@ import Image3 from '../../Assets/img/tab-3.jpg'
 
 function Home() {
 
+  
+
     return(
         <div className="homepage-container ">
                  <Banner/>
                  
         <div className='homepage-container-lower'>
       
-                <Tabs className="tab-text" content="Oil" backdrop={Image3}/>
-                <Tabs className="tab-text" content="Engraving" backdrop={Image1}/>
-                <Tabs className="tab-text" content="Contemporary" backdrop={Image2}/>
+                <Tabs className="tab-text" content="Oil" backdrop={Image3} />
+                <Tabs className="tab-text" content="Engraving" backdrop={Image1} />
+                <Tabs className="tab-text" content="Contemporary" backdrop={Image2} />
          
         </div>
         </div>

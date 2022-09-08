@@ -1,18 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCTS } from '../../Utils/queries';
 import CategorySpecific from '../../Components/CategorySpecific';
 import Cart from "../../Components/Cart"
 import FAQComponent from '../../Components/FAQComponent';
 import CategoryAll from '../../Components/CategoryAll';
 import EmailOrder from '../../Components/EmailOrder';
+import { Link} from 'react-router-dom'
 
 
 
 function Shop(props) {
   const { product, reroute } = props
-  const [Selection, setSelection] = useState(reroute);
+  const [Selection, setSelection] = useState("Welcome");
   const [CartArray, setCartArray] = useState([])
   const [total,setTotal] = useState(0)
 
@@ -60,6 +59,8 @@ function Shop(props) {
     setTotal(sum)
   }, [CartArray])
 
+
+
   return (
     <div className="Shop-Container">
 
@@ -68,7 +69,8 @@ function Shop(props) {
 
       <div className="row">
         <section className="shop-menu">
-          <button type="button" className="btn btn-outline-secondary shop-menu-button" name="Welcome" onClick={categoryFilter}> Show All </button>
+          {/* <button type="button" className="btn btn-outline-secondary shop-menu-button" name="Welcome" onClick={categoryFilter}> Show All </button> */}
+        <Link className="btn btn-outline-secondary shop-menu-button" to="/shop">Show All</Link>
           <button type="button" className="btn btn-outline-secondary shop-menu-button" name="Engraving" onClick={categoryFilter}> Engraving </button>
           <button type="button" className="btn btn-outline-secondary shop-menu-button" name="Oil" onClick={categoryFilter}> Oil </button>
           <button type="button" className="btn btn-outline-secondary shop-menu-button" name="Contemporary" onClick={categoryFilter}> Contemporary </button>

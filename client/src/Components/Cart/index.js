@@ -1,30 +1,14 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { EmailOrderMobile } from '../EmailOrderMobile/index.js'
 export default function Cart(props) {
 
     const { orderArray, totalAmount, removeFunction } = props
-    const [text,setText] = useState("Copy/paste your order here;");
-    const form = useRef();
+   
+   
 
-    const handleChange = (event) => {
-      event.preventDefault()
-      const { name, value } = event.target;
-      setText(value)
-  }
+  
  
-  const sendEmail2 = (e) => {
-    e.preventDefault();
-    console.log("We are attempting to use the mobile form to submit an order")
-    emailjs.sendForm('service_exquisite', 'template_dm7fmbr', form.current, 'xH1ueJRoUuH48Sv_H')
-      .then((result) => {
-          console.log(result)
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-    setText("Copy/paste your order here;")
-  };
+  
     const deleteFunction = (event) => {
         event.preventDefault()
         console.log("We are attempting to delete", event.target.id)
@@ -98,36 +82,11 @@ export default function Cart(props) {
 
                             </div>
 
-                            <div className="modal-body d-flex">
-                                <form ref={form} onSubmit={sendEmail2}> 
-                                    <div className="input-group mb-3">
-                                        <label>Customer Name</label>
-                                        <input className="orderLabel" type="text" name="from_name" />
-                                    </div>
-                       
+                         
 
-                          
-                                    <div className="input-group mb-3">
-                                        <label>Customer Email</label>
-                                        <input className="orderLabel" type="email" name="email" />
-                                    </div>
-                          
+                            <EmailOrderMobile/>
 
-                                    <div className="input-group mb-3">
-                                        <label> Invoice (Copy Paste Cart) </label>
-                                        <textarea className="invoice-mobile" name="message" onChange={handleChange} value={text}/>
-                                    </div>
-
-                            <button className="btn btn-outline-secondary shop-menu-button" type="submit" value="Send" > ORDER </button>
-                                </form>
-                            </div>
-
-
-
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close </button>
-                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Order</button>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>

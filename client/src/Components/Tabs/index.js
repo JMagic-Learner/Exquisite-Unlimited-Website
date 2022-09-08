@@ -5,8 +5,9 @@ function Tabs(props) {
     const {content, backdrop} = props
 
     return(
-        <div className="horizontal-container border rounded">
+        <div className="horizontal-container border rounded" >
             <Link className="nav-link " to={`/shop/${content}`}>
+          
                 <div className="Tab-Image-Container"
             style={
                 { 

@@ -1,70 +1,73 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Exquisite Unlimited Website
+![NPM](https://img.shields.io/npm/l/inquirer)
 
-## Available Scripts
+[LIVE DEPLOY](https://JMagic-Learner.github.io/Exquisite Unlimited Website)
+## Description
+Hello, my name is Jason Ma. This application is called Exquisite Unlimited Website.
+              
+Description:
+This application is the core website for Exquisite Unlimited LLC. This website showcases and allows consumers to order paintings. The Techstack used for this application is REACT, Bootstrap, MongoDB, GraphQL, Apollo-Client             
+          
+Coding Process
+The coding process was unusual. Instead of having a website design given by a graphic artist, or having the backend infrastructure designed by a database engineer/administrator, I instead had to design this website from the ground up. Before I set out on the physical design of this website, I first had to set up the GraphQL server as shown in Exquisite-Unlimited-Server. After defining the GraphQL queries and mutations, I set up the MongoDB Cloud service to allow me to test the GraphQL requests. After confirming that the GraphQL server was operational, I then began working on structuring the physical layout of the website. I blocked out 3 main Pages for use, and used React-Router-Dom to help the webpage navigate to the specifeid endpoints. After that, I designed the Homepage, then the About page, and then the Shoppage.
+              
+# Table of Contents 
+If your README is long, add a table of contents to make it easy for users to find what they need.
+- [Installation](##-Installation)
+- [Usage](#Usage)
+- [Credits](#Credits)
+- [License](#license)
+- [Contribution](#contribution)
+- [Test](#test)
+- [Question](#question)
+              
+# Installation
 
-In the project directory, you can run:
+Step 1: Clone this REPO into your local development machine
+Step 2: Run NPM I to install the client dependencies
+Step 3: Npm run start to start the application
 
-### `npm start`
+Optional: There is an optional installation where you can also install a local server.
+Assuming that you have a MongoDB Compass, you can install the server and initialize the local repo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In index.js, instead of using the following code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+const client = new ApolloClient({
+    uri: 'https://exquisite-unlimited-server.herokuapp.com',
+    cache: new InMemoryCache(),
+  });
 
-### `npm test`
+You can instead use;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const client = new ApolloClient({
+    uri: 'MongoDB Compass URI connection string',
+    cache: new InMemoryCache(),
+  });
+              
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+            
+# Usage
+              
+This appliation is meant to help my father sell his paintings.
+                                      
+          
+# License
+            
+License Utilized: 
+![NPM](https://img.shields.io/npm/l/inquirer)
+                      
+                      
+# Contribution
+Jason Ma, React-Router-Dom, REACT, GraphQL, Apollo-Server, Apollo-Client, MongoDB, Boostrap, etc
+              
+# Tests
+Use the CLI command, NPM run test to start the unit tests
+              
+# Questions
+Github Username: JMagic-Learner
+Github Profile: 
+[JMagic-Learner](https://github.com/JMagic-Learner)
+              
+If you have any questions, please contact me via email at the following email address;
+MaJason93@gmail.com
