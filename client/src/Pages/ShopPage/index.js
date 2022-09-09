@@ -11,7 +11,7 @@ import { Link} from 'react-router-dom'
 
 function Shop(props) {
   const { product, reroute } = props
-  const [Selection, setSelection] = useState("Welcome");
+  const [Selection, setSelection] = useState(reroute);
   const [CartArray, setCartArray] = useState([])
   const [total,setTotal] = useState(0)
 
