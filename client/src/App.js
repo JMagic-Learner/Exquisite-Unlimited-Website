@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from './Utils/queries';
 import {  BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 import React, {useEffect,useState} from 'react'
+import Carousel from './Components/Carousel';
 
 function App() {
 
@@ -30,9 +31,10 @@ function App() {
 
   return (
     <div className="App">
-   
+      
       <BrowserRouter>
       <Navigation/>
+    
       <Routes>
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/about" element={<About />}/>

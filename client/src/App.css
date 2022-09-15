@@ -118,8 +118,9 @@ margin-top:1%;
   margin-left:10vw;
 }
 .column-image{
-  height:1000px;
   background-position: center;
+  height:1200px;
+  max-width:40vw;
 }
 
 /* HOVER ITEM */

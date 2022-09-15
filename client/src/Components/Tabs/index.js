@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Route, Routes, useLocation} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function Tabs(props) {
     const {content, backdrop} = props
