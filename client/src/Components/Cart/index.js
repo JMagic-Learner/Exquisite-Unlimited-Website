@@ -1,17 +1,24 @@
 import React, { useRef, useState } from 'react';
 import { EmailOrderMobile } from '../EmailOrderMobile/index.js'
+import { useSelector, useDispatch } from 'react-redux'
+import { quantityCount } from '../../Slices/Quantity/quantitySlice.js';
+import { totalAmount } from '../../Slices/TotalAmount/totalAmountSlice.js';
+import {cartArray} from '../../Slices/Item/itemSlice.js'
+
+
 export default function Cart(props) {
 
-    const { orderArray, totalAmount, removeFunction } = props
-   
-   
+    const { removeFunction } = props
+    const quantity = useSelector(quantityCount)
+    const item = useSelector(cartArray)
+    const total = useSelector(totalAmount)
 
-  
- 
-  
+
+
+
     const deleteFunction = (event) => {
         event.preventDefault()
-        console.log("We are attempting to delete", event.target.id)
+        console.log("We are attempting to delete by serial", event.target.id)
         removeFunction(event.target.id)
     }
     return (
@@ -37,7 +44,7 @@ export default function Cart(props) {
 
                             <div className="modal-body d-flex">
                                 <div className="input-group mb-3">
-                                    <h4> Cart (Copy Paste) </h4>
+                                    <h4> Cart (Copy Paste)  </h4>
 
 
                                     <table className="table">
@@ -51,7 +58,7 @@ export default function Cart(props) {
 
                                             </tr>
                                         </thead>
-                                        {orderArray.map((item, index) => {
+                                        {item.map((item, index) => {
                                             return (
 
                                                 <tbody>
@@ -61,7 +68,7 @@ export default function Cart(props) {
                                                         <td>{item.serial}</td>
                                                         <td>{item.quantity}</td>
                                                         <td>{item.quantity * item.price}</td>
-                                                        <button id={item.name} className="btn btn-outline-secondary" onClick={deleteFunction}> X </button>
+                                                        <button id={item.serial} className="btn btn-outline-secondary" onClick={deleteFunction}> X </button>
                                                     </tr>
                                                 </tbody>
 
@@ -74,7 +81,7 @@ export default function Cart(props) {
                                             <td></td>
                                             <td></td>
                                             <td> Total:</td>
-                                            <td>  ${totalAmount} </td>
+                                            <td>  ${total} </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -82,19 +89,20 @@ export default function Cart(props) {
 
                             </div>
 
-                         
 
-                            <EmailOrderMobile/>
 
-                           
+                            <EmailOrderMobile />
+
+
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div className="mobile-disable">
-                <h4> Cart (Copy Paste) </h4>
+{/* Non mobile format */}
+            {/* <div className="mobile-disable">
+                <h4> Cart (Copy Paste) {quantity}</h4>
 
 
                 <table className="table">
@@ -132,6 +140,48 @@ export default function Cart(props) {
                         <td></td>
                         <td> Total:</td>
                         <td>  ${totalAmount} </td>
+                    </tr>
+                </table>
+            </div> */}
+            <div className="mobile-disable">
+                <h4> Cart (Copy Paste) {quantity}</h4>
+
+
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item </th>
+                            <th scope="col">Name </th>
+                            <th scope="col">Serial</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Price</th>
+
+                        </tr>
+                    </thead>
+                    {item.map((item, index) => {
+                        return (
+
+                            <tbody>
+                                <tr className="cart-font">
+                                    <th scope="row"> #{index + 1}</th>
+                                    <td>{item.name}</td>
+                                    <td>{item.serial}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.quantity * item.price}</td>
+                                    <button id={item.serial} className="btn btn-outline-secondary" onClick={deleteFunction}> X </button>
+                                </tr>
+                            </tbody>
+
+
+                        )
+
+                    })}
+                    <tr>
+                        <th scope="row"> Final </th>
+                        <td></td>
+                        <td></td>
+                        <td> Total:</td>
+                        <td>  ${total} </td>
                     </tr>
                 </table>
             </div>

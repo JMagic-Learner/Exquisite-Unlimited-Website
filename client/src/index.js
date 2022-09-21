@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import store from './Store/store.js'
+import { Provider } from 'react-redux'
+
 
 const client = new ApolloClient({
     uri: 'https://exquisite-unlimited-server.herokuapp.com',
@@ -12,7 +15,9 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <ApolloProvider client={client}>
+  <Provider store={store}>
     <App />
+  </Provider>
     </ApolloProvider>
 );
 

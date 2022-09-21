@@ -3,14 +3,18 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORY } from '../../Utils/queries'
 import Order from '../Order/index.js'
 
+
+
 function CategoryAll(props) {
     const {array, childFunction} = props
     const [SelectedOrder, setSelectedOrder] = useState("");
+  
 
     const recordOrder = (event) => {
         event.preventDefault()
         let selectedProduct = event.target.name
         setSelectedOrder(selectedProduct)
+       
     }
 
     return (

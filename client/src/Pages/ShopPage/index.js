@@ -5,8 +5,12 @@ import Cart from "../../Components/Cart"
 import FAQComponent from '../../Components/FAQComponent';
 import CategoryAll from '../../Components/CategoryAll';
 import EmailOrder from '../../Components/EmailOrder';
-import { Link} from 'react-router-dom'
-
+import { useSelector, useDispatch } from 'react-redux'
+import {cartArray} from '../../Slices/Item/itemSlice.js'
+import { removeItem, addItem } from '../../Slices/Quantity/quantitySlice.js'
+import { addtoTotal, subtractfromTotal } from '../../Slices/TotalAmount/totalAmountSlice.js'
+import { addItemToCart } from '../../Slices/Item/itemSlice.js'
+import { removeItemFromCart } from '../../Slices/Item/itemSlice.js'
 
 
 function Shop(props) {
@@ -15,6 +19,8 @@ function Shop(props) {
   const [CartArray, setCartArray] = useState([])
   const [total,setTotal] = useState(0)
 
+  const item = useSelector(cartArray)
+  const dispatch = useDispatch()
 
   const categoryFilter = (event) => {
     event.preventDefault()
@@ -30,17 +36,47 @@ function Shop(props) {
   
 
   const liftedState = (OrderInput) => {
-    console.log("This is the order selected", OrderInput)
-    setCartArray([
-      ...CartArray,
-      OrderInput
-    ]);
+    dispatch(addItem())
+    if (item.length>=1) {
+      const duplicate = item.filter((product)=>product.serial == OrderInput.serial)
+      let duplicateQuantity = 0;
+    
+      duplicate.forEach((individualProduct)=> duplicateQuantity+= individualProduct.quantity)
+     
+     
+      const duplicateItem = {
+        name:OrderInput.name,
+        category:"",
+        description:"",
+        price:OrderInput.price,
+        serial:OrderInput.serial,
+        quantity: parseInt(OrderInput.quantity) + parseInt(duplicateQuantity),
+        size:""
+      }
+      removeFromCart(OrderInput.serial, "duplicate")
+      dispatch(addItemToCart( duplicateItem))
+      dispatch(addtoTotal(duplicateItem))
+      
+    } else {
+      dispatch(addItemToCart( OrderInput))
+      dispatch(addtoTotal(OrderInput))
+    }
+    
   }
 
-  const removeFromCart = (RemoveOrder) => {
+  const removeFromCart = (RemoveOrder, message) => {
     console.log("This is the order selected", RemoveOrder)
-    let filteredCart = CartArray.filter((item)=> item.name != RemoveOrder)
-    setCartArray(filteredCart)
+    console.log("this is the the array of items in the cart", item)
+    console.log("This is after the filter" , item.filter((product)=> product.serial == RemoveOrder))
+    let targetProducts = item.filter((product)=> product.serial == RemoveOrder)
+    let amounttoSubtract = 0;
+    targetProducts.forEach((product)=> amounttoSubtract+=(product.price * product.quantity))
+    if (message != "duplicate") {
+      dispatch(removeItem())
+    }
+
+    dispatch(removeItemFromCart(RemoveOrder))
+    dispatch(subtractfromTotal(amounttoSubtract))
   }
 
   useEffect(() => {
@@ -80,7 +116,7 @@ function Shop(props) {
             data-bs-toggle="modal"
             data-bs-target="#FAQModal"
             onClick={FAQ}> FAQ </button>
-          <Cart orderArray={CartArray} totalAmount={total} removeFunction={removeFromCart}/>
+          <Cart  removeFunction={removeFromCart}/>
           <EmailOrder orderArray={CartArray}/>
         </section>
 
