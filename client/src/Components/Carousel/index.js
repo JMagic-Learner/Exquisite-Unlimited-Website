@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import OwlCarousel from 'react-owl-carousel';
 import { Link } from 'react-router-dom'
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+// import 'owl.carousel/dist/assets/owl.carousel.css';
+// import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Image1 from '../../Assets/img/tab-1.JPG'
 import Image2 from '../../Assets/img/tab-2.jpg'
 import Image3 from '../../Assets/img/tab-3.jpg'
