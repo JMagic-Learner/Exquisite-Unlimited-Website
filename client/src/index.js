@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 
 
 const client = new ApolloClient({
-    uri: 'https://exquisite-unlimited-server.herokuapp.com',
+    uri: 'https://jztdhnmxsm.us-west-2.awsapprunner.com/',
     cache: new InMemoryCache(),
   });
 const root = ReactDOM.createRoot(document.getElementById('root'));

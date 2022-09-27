@@ -3,6 +3,7 @@ require('dotenv').config();
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+// We need to update this
 const {
     ApolloServerPluginLandingPageLocalDefault
   } = require('apollo-server-core');
