@@ -4,7 +4,7 @@ import Tabs from '../../Components/Tabs'
 import Image1 from '../../Assets/img/tab-1.JPG'
 import Image2 from '../../Assets/img/tab-2.jpg'
 import Image3 from '../../Assets/img/tab-3.jpg'
-import Carousel from '../../Components/Carousel'
+// import Carousel from '../../Components/Carousel'
 
 function Home() {
 
