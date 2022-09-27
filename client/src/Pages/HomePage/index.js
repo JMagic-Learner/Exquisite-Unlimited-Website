@@ -13,7 +13,7 @@ function Home() {
     return(
         <div className="homepage-container ">
                  <Banner/>
-                 <Carousel/>
+                 {/* <Carousel/> */}
         <div className='homepage-container-lower'>
       
                 <Tabs className="tab-text" content="Oil" backdrop={Image3} />
