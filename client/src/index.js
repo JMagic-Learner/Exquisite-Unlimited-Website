@@ -6,9 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 import store from './Store/store.js'
 import { Provider } from 'react-redux'
-import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
+
 
 
 const client = new ApolloClient({
