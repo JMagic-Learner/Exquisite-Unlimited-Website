@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Navigation from './Components/Navigation';
 import Home from './Pages/HomePage'
@@ -7,7 +7,7 @@ import Shop from './Pages/ShopPage';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from './Utils/queries';
 import {  BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
-import React, {useEffect,useState} from 'react'
+import React from 'react'
 import Carousel from './Components/Carousel';
 
 function App() {

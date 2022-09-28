@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { EmailOrderMobile } from '../EmailOrderMobile/index.js'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import { quantityCount } from '../../Slices/Quantity/quantitySlice.js';
 import { totalAmount } from '../../Slices/TotalAmount/totalAmountSlice.js';
 import {cartArray} from '../../Slices/Item/itemSlice.js'
@@ -58,10 +58,11 @@ export default function Cart(props) {
 
                                             </tr>
                                         </thead>
+                                        <tbody>
                                         {item.map((item, index) => {
                                             return (
 
-                                                <tbody>
+                                                
                                                     <tr className="cart-font">
                                                         <th scope="row"> #{index + 1}</th>
                                                         <td>{item.name}</td>
@@ -70,12 +71,13 @@ export default function Cart(props) {
                                                         <td>{item.quantity * item.price}</td>
                                                         <button id={item.serial} className="btn btn-outline-secondary" onClick={deleteFunction}> X </button>
                                                     </tr>
-                                                </tbody>
+                                            
 
 
                                             )
-
+                                          
                                         })}
+                                          </tbody>
                                         <tr>
                                             <th scope="row"> Final </th>
                                             <td></td>

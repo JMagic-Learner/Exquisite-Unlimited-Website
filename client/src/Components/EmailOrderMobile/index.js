@@ -7,7 +7,7 @@ export const EmailOrderMobile = () => {
     const form = useRef();
     const handleChange = (event) => {
       event.preventDefault()
-      const { name, value } = event.target;
+      const { value } = event.target;
       setText(value)
   }
  

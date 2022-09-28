@@ -17,7 +17,7 @@ function Shop(props) {
   const { product, reroute } = props
   const [Selection, setSelection] = useState(reroute);
   const [CartArray, setCartArray] = useState([])
-  const [total,setTotal] = useState(0)
+  // const [total,setTotal] = useState(0)
 
   const item = useSelector(cartArray)
   const dispatch = useDispatch()
@@ -79,21 +79,21 @@ function Shop(props) {
     dispatch(subtractfromTotal(amounttoSubtract))
   }
 
-  useEffect(() => {
-    let temporary = []
-    CartArray.forEach((item)=>{
-      if (item.quantity>1) {
-        let quantity = item.quantity
-        for(let i = 0; i< quantity; i++) {
-          temporary.push(item.price)
-        }
-      } else {
-        temporary.push(item.price)}
-      }
-    )
-    let sum = temporary.reduce((pv, cv) => pv + cv, 0);
-    setTotal(sum)
-  }, [CartArray])
+  // useEffect(() => {
+  //   let temporary = []
+  //   CartArray.forEach((item)=>{
+  //     if (item.quantity>1) {
+  //       let quantity = item.quantity
+  //       for(let i = 0; i< quantity; i++) {
+  //         temporary.push(item.price)
+  //       }
+  //     } else {
+  //       temporary.push(item.price)}
+  //     }
+  //   )
+  //   let sum = temporary.reduce((pv, cv) => pv + cv, 0);
+  //   setTotal(sum)
+  // }, [CartArray])
 
 
 

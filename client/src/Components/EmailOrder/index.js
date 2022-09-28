@@ -2,14 +2,14 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export const EmailOrder = (props) => {
-    const {orderArray, totalAmount} = props
+    // const {orderArray, totalAmount} = props
     const [text,setText] = useState("Copy/paste your order here;");
     const form = useRef();
 
 
     const handleChange = (event) => {
       event.preventDefault()
-      const { name, value } = event.target;
+      const { value } = event.target;
       setText(value)
   }
  

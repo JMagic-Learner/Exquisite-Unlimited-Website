@@ -1,5 +1,7 @@
 import {render, fireEvent, waitFor, screen} from '@testing-library/react'
 import { MockedProvider } from "@apollo/client/testing";
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
 import {BrowserRouter, MemoryRouter} from 'react-router-dom'
 import {QUERY_PRODUCTS} from './Utils/queries'
 import App from './App';
@@ -7,6 +9,9 @@ import Shop from './Pages/ShopPage';
 import About from './Pages/AboutPage';
 import Home from './Pages/HomePage';
 
+import itemReducer, { cartArray } from './Slices/Item/itemSlice'
+import quantityReducer from './Slices/Quantity/quantitySlice'
+import totalAmountReducer from './Slices/TotalAmount/totalAmountSlice'
 
 const mocks = [
   {
@@ -14,12 +19,36 @@ const mocks = [
       query: QUERY_PRODUCTS,
     result: {
       products: {
-        products: { pictureID: 12, name: "Flowers Ornate #2", category: "Engraving", description: "FlowerVase2", price: 69.00, serial: ["EU05MY 8023B-1", "EU05MY 8023B-2", "EU05MY 8023B-3", "EU05MY 8023B-4"], quantity:10, size:"test"}
+        products: { pictureID: 12, 
+                    name: "Flowers Ornate #2", 
+                    category: "Engraving", 
+                    description: "FlowerVase2", 
+                    price: 69.00, 
+                    serial: ["EU05MY 8023B-1", "EU05MY 8023B-2", "EU05MY 8023B-3", "EU05MY 8023B-4"], 
+                    quantity:10, 
+                    size:"test"}
       }
     }
   }
 }
 ];
+
+export function renderWithProviders(
+  ui,
+  {
+    preloadedState = {},
+    // Automatically create a store instance if no store was passed in
+    store = configureStore({ reducer: { quantity: quantityReducer, item: itemReducer, totalAmount:totalAmountReducer }, preloadedState }),
+    ...renderOptions
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>
+  }
+
+  // Return an object with the store and all of RTL's query functions
+  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
+}
 
 test('Renders default application UI', () => {
   render(
@@ -63,7 +92,7 @@ test('Testing an valid response for react-routing-dom',  () => {
       "size": "32 x 32" 
     },
   ]
-  render(
+  renderWithProviders(
     <MockedProvider mocks={mocks} addTypename={false}> 
       <MemoryRouter initialEntries={[route]}>
           <Shop product={result} reroute="Welcome"/>
@@ -99,3 +128,29 @@ test('Describe the About Page as it should appear', () => {
   const SubTitle2= screen.getByText(`Our Products`)
   expect(SubTitle2).toBeInTheDocument();
 });
+
+test('Clicking on shop page, item', () => {
+
+  const result = [
+    {
+      "pictureID": 1,
+      "name": "Landscape Catalogue #1",
+      "category": "Oil",
+      "description": "Countryside1",
+      "price": 85.00,
+      "serial": ["KN1 013", "KNI 017", "KNI 020", "KNI 021", "KNI 022", "KNI 024"],
+      "quantity":10,
+      "size": "32 x 32" 
+    },
+  ]
+  renderWithProviders(
+    <MockedProvider mocks={mocks} addTypename={false}> 
+         <Shop product={result} reroute="Welcome"/> 
+  </MockedProvider>
+  )
+
+  const Item = screen.getByText(`Landscape Catalogue #1`)
+  expect(Item).toBeInTheDocument();
+
+});
+

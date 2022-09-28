@@ -89,7 +89,7 @@ function Order(props) {
                                 </ul>
                                 
                             </label>
-                        <input type="text" id="serial-output" name="serial-output" value={selected}></input>  
+                        <input type="text" id="serial-output" name="serial-output" value={selected} readOnly></input>  
                         </div>       
                     </div>
 
@@ -99,7 +99,7 @@ function Order(props) {
                                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Select Quantity
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul className="dropdown-menu">
                                       <li>  
                                             <a className="dropdown-item text-black " 
                                                id={1}
@@ -131,7 +131,7 @@ function Order(props) {
                                 </ul>
                                 
                             </label>
-                        <input type="text" id="serial-output" name="serial-output" value={quantity}></input>  
+                        <input type="text" id="serial-output" name="serial-output" value={quantity} readOnly></input>  
                         </div>       
                     </div>
 

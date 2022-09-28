@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORY } from '../../Utils/queries'
 import Order from '../Order/index.js'

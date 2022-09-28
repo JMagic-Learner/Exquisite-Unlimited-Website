@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORY } from '../../Utils/queries'
+import React, {useState } from 'react'
 import Order from '../Order/index.js'
-
 
 
 function CategoryAll(props) {
@@ -14,7 +11,6 @@ function CategoryAll(props) {
         event.preventDefault()
         let selectedProduct = event.target.name
         setSelectedOrder(selectedProduct)
-       
     }
 
     return (
